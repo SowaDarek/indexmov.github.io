@@ -118,6 +118,31 @@
         color: #bbb;
         font-size: 14px;
     }
+
+    /* Torrent provider cards */
+    .torrent-card {
+        background:#1a1a1a;
+        border:1px solid #222;
+        border-radius:8px;
+        margin-bottom:20px;
+        padding:20px;
+    }
+
+    .torrent-title {
+        margin:0;
+        color:#ff4444;
+        font-size:22px;
+    }
+
+    .torrent-open {
+        background:#ff4444;
+        padding:10px 18px;
+        color:white;
+        text-decoration:none;
+        border-radius:6px;
+        display:inline-block;
+        margin-top:10px;
+    }
 </style>
 </head>
 
@@ -141,8 +166,12 @@
 
 <div id="results"></div>
 
+<h2 style="text-align:center;margin:30px 0;color:#ff4444;">Torrent Search Providers</h2>
+<div id="torrent-results" style="width:90%;max-width:900px;margin:auto;"></div>
+
 <script>
-const DATA_URL = "https://sowadarek.github.io/indexmov.github.io/data/popular-list.json";
+const ROOT = "https://sowadarek.github.io/indexmov.github.io";
+const DATA_URL = ROOT + "/data/popular-list.json";
 
 let mediaList = [];
 
@@ -197,12 +226,63 @@ function filterCategory(cat) {
     else displayResults(mediaList.filter(x => x.type === cat));
 }
 
+/* ---------------------------
+   Torrent Provider Display
+---------------------------- */
+function showTorrentProviders(query) {
+    const container = document.getElementById("torrent-results");
+    container.innerHTML = "";
+
+    const providers = [
+        {
+            name: "The Pirate Bay",
+            logo: ROOT + "/data/logo-tpb.png",
+            url: `https://thepiratebay.org/search.php?q=${encodeURIComponent(query)}`
+        },
+        {
+            name: "1337x",
+            logo: ROOT + "/data/logo-1337x.png",
+            url: `https://1337x.to/search/${encodeURIComponent(query)}/1/`
+        },
+        {
+            name: "Nyaa",
+            logo: ROOT + "/data/logo-nyaa.png",
+            url: `https://nyaa.si/?f=0&c=0_0&q=${encodeURIComponent(query)}`
+        }
+    ];
+
+    providers.forEach(p => {
+        container.innerHTML += `
+            <div class="torrent-card">
+                <div style="display:flex;align-items:center;gap:15px;">
+                    <img src="${p.logo}" style="width:60px;height:60px;border-radius:6px;">
+                    <div>
+                        <h3 class="torrent-title">${p.name}</h3>
+                        <p style="color:#aaa;margin:5px 0 15px;">Click below to view results</p>
+                        <a href="${p.url}" target="_blank" class="torrent-open">Open Results</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+/* ---------------------------
+   Main Search Button
+---------------------------- */
 document.getElementById("search-btn").onclick = () => {
-    const q = document.getElementById("search-input").value.toLowerCase();
+    const query = document.getElementById("search-input").value.trim().toLowerCase();
+
+    if (!query) return;
+
+    // search the JSON
     const filtered = mediaList.filter(x =>
-        x.title.toLowerCase().includes(q)
+        x.title.toLowerCase().includes(query)
     );
     displayResults(filtered);
+
+    // show providers
+    showTorrentProviders(query);
 };
 
 loadData();
