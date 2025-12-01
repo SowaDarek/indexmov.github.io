@@ -1,0 +1,26 @@
+[
+    {
+        "title": "The Simpsons",
+        "type": "TV Show",
+        "year": 1989,
+        "rating": 8.7
+    },
+    {
+        "title": "Dexter",
+        "type": "TV Show",
+        "year": 2006,
+        "rating": 8.6
+    },
+    {
+        "title": "SpongeBob SquarePants",
+        "type": "TV Show",
+        "year": 1999,
+        "rating": 7.9
+    },
+    {
+        "title": "Inception",
+        "type": "Movie",
+        "year": 2010,
+        "rating": 8.8
+    }
+]
