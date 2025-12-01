@@ -3,24 +3,28 @@
         "title": "The Simpsons",
         "type": "TV Show",
         "year": 1989,
-        "rating": 8.7
+        "rating": 8.7,
+        "image": "https://pics.filmaffinity.com/the_simpsons-170785177-large.jpg"
     },
     {
         "title": "Dexter",
         "type": "TV Show",
         "year": 2006,
-        "rating": 8.6
+        "rating": 8.6,
+        "image": "https://pics.filmaffinity.com/dexter-421321667-large.jpg"
     },
     {
         "title": "SpongeBob SquarePants",
         "type": "TV Show",
         "year": 1999,
-        "rating": 7.9
+        "rating": 7.9,
+        "image": "https://pics.filmaffinity.com/spongebob_squarepants-296720548-large.jpg"
     },
     {
         "title": "Inception",
         "type": "Movie",
         "year": 2010,
-        "rating": 8.8
+        "rating": 8.8,
+        "image": "https://pics.filmaffinity.com/inception-652954101-large.jpg"
     }
 ]
