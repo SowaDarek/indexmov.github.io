@@ -205,7 +205,7 @@ function displayResults(list) {
     list.forEach(item => {
         const image = item.image 
             ? item.image 
-            : "https://via.placeholder.com/120x180/333/999?text=No+Image";
+            : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png";
 
         container.innerHTML += `
             <div class="result-item">
@@ -245,9 +245,14 @@ function showTorrentProviders(query) {
             url: `https://1337x.to/search/${encodeURIComponent(query)}/1/`
         },
         {
-            name: "Nyaa",
-            logo: ROOT + "/data/logo-nyaa.png",
-            url: `https://nyaa.si/?f=0&c=0_0&q=${encodeURIComponent(query)}`
+            name: "Lime Torrents",
+            logo: ROOT + "/data/logo-lime.png",
+            url: `https://www.limetorrents.fun/search/all/${encodeURIComponent(query)}`
+        },
+		{
+            name: "EZTV (TV Shows)",
+            logo: ROOT + "/data/logo-eztv.png",
+            url: `https://eztvx.to/search/${encodeURIComponent(query)}`
         }
     ];
 
